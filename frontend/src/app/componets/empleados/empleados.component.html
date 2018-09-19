@@ -1,0 +1,57 @@
+<div class="container">
+   <div class="row">
+      <div class="col s5">
+        <div class="card">
+          <div class="card-content">
+              <form #empleadoFrom="ngForm"  (ngSubmit)="addEmpleado(empleadoFrom)">
+                  <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="empleadoService.seleccionEmpleado._id">
+                  <div class="row">
+                      <div class="input-field col s12">
+                          <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="empleadoService.seleccionEmpleado.nombre" placeholder="ingresa tu nombre">
+                      </div>
+                      <div class="input-field col s12">
+                        <input type="text" name="posicion" #nombre="ngModel" [(ngModel)]="empleadoService.seleccionEmpleado.posicion" placeholder="ingresa tu posicion">
+                    </div>
+                    <div class="input-field col s12">
+                      <input type="text" name="oficina" #nombre="ngModel" [(ngModel)]="empleadoService.seleccionEmpleado.oficina" placeholder="ingresa tu oficina">
+                  </div>
+                  <div class="input-field col s12">
+                    <input type="text" name="salario" #nombre="ngModel" [(ngModel)]="empleadoService.seleccionEmpleado.salario" placeholder="ingresa tu salario">
+                 </div>
+                 <div class="card-action">
+                    <div class="input-field col s12">
+                       <button class="btn left" >guardar</button>
+                       <button class="btn right"(click)="resetFrom(empleadoFrom)">limpiar</button>
+                    </div>
+                 </div>
+
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+      <div class="col s7">
+            <table>
+                <thead>
+                    <th>nombre</th>
+                    <th>posicion</th>
+                    <th>oficina</th>
+                    <th>salario</th>
+                    <th>accion</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Empleado of empleadoService.Empleado">
+                        <td> {{Empleado.nombre}} </td>
+                        <td> {{Empleado.posicion}} </td>
+                        <td> {{Empleado.oficina}} </td>
+                        <td> {{Empleado.salario}} </td>
+                        <td>
+                            <a (click)="editEmpleado(Empleado)" ><i class="material-icons">edit</i></a>
+                            <a (click)="ElimiEmpleado(Empleado._id)"><i class="material-icons">delete</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+      </div>
+   </div>
+</div>
